@@ -1,7 +1,6 @@
 /**
  * @author djer1
- * 
- * Questions form GameDev.
+ *         Questions form GameDev.
  *
  */
 package fr.gamedev.question;

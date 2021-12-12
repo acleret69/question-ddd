@@ -10,34 +10,43 @@ import javax.persistence.Id;
  */
 @Entity
 public class Question {
-	
-	@GeneratedValue
-	@Id
-	private long id;
-	private String content;
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
-	/**
-	 * @return the content
-	 */
-	public String getContent() {
-		return content;
-	}
-	/**
-	 * @param content the content to set
-	 */
-	public void setContent(String content) {
-		this.content = content;
-	}
+    /**
+     * id auto generated.
+     */
+    @GeneratedValue
+    @Id
+    private long id;
+    /**
+     * content of the question.
+     */
+    private String content;
+
+    /**
+     * @return the id
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * @param newid the id to set
+     */
+    public void setId(final long newid) {
+        this.id = newid;
+    }
+
+    /**
+     * @return the content
+     */
+    public String getContent() {
+        return content;
+    }
+
+    /**
+     * @param newcontent the content to set
+     */
+    public void setContent(final String newcontent) {
+        this.content = newcontent;
+    }
 
 }
