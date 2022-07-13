@@ -1,4 +1,4 @@
-package fr.gamedev.question.data;
+package fr.gamedev.category.data;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

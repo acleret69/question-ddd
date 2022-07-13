@@ -1,9 +1,9 @@
-package fr.gamedev.question.repository;
+package fr.gamedev.category.repository;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import fr.gamedev.question.data.Tag;
+import fr.gamedev.category.data.Tag;
 
 /**
  * @author djer1
