@@ -13,6 +13,22 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
+	<packaging>
+		pom
+	</packaging>
+
+	<modules>
+		<module>
+			Question
+		</module>
+		<module>
+			category
+		</module>
+		<module>
+			user
+		</module>
+	</modules>
+
 	<properties>
 		<java.version>1.8</java.version>
 		<javadoc.source.version>8</javadoc.source.version>
