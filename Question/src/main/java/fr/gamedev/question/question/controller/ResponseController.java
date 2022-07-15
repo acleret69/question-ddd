@@ -113,7 +113,7 @@ public class ResponseController {
     }
 
     @PostMapping("/userAnswer")
-    public final void userAnswer(@RequestParam final long Id, @RequestParam final long IdUser,
+    public final String userAnswer(@RequestParam final long Id, @RequestParam final long IdUser,
                                  @RequestParam final long IdQuestion, @RequestParam String response) {
         Question question = questionRepository.findQuestionById(IdQuestion);
 
@@ -124,12 +124,14 @@ public class ResponseController {
             userAnswerService.setPoints(userAnswer, question, pending);
             userAnswerRepository.save(userAnswer);
             pendingResponseRepository.save(pending);
+            return  ("Vous avez gagner : " + userAnswer.getPoints() + " points");
         } else {
             UserAnswer userAnswer = userAnswerService.initialiseUserAnswer(IdUser, IdQuestion, response);
             PendingResponse pendingResponse = pendingResponseService.initialiseUserAnswer(IdUser, IdQuestion);
             userAnswerService.setPoints(userAnswer, question, pendingResponse);
             userAnswerRepository.save(userAnswer);
             pendingResponseRepository.save(pendingResponse);
+            return  ("Vous avez gagner : " + userAnswer.getPoints() + " points");
         }
     }
 

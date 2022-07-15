@@ -28,6 +28,8 @@ public class UserAnswerService {
             }
             pendingResponse.setStatus(Status.answered);
 
+        } else {
+            userAnswer.setPoints(0);
         }
     }
 
