@@ -1,21 +1,19 @@
 package fr.gamedev.question.question.data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 
 /**
  * @author djer1
  */
 @Entity
+@Table(name = "userAnswer")
 public class UserAnswer {
 
     /**
      * id auto generated.
      */
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private long id;
 

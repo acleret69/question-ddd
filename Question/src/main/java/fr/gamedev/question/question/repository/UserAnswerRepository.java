@@ -9,7 +9,7 @@ import fr.gamedev.question.question.data.UserAnswer;
  * @author djer13
  *
  */
-@RepositoryRestResource(collectionResourceRel = "userAnswer", path = "userAnswer")
+@RepositoryRestResource(collectionResourceRel = "usersAnswer", path = "usersAnswer")
 public interface UserAnswerRepository extends PagingAndSortingRepository<UserAnswer, Long> {
 
 }

@@ -1,7 +1,10 @@
 package category.controller;
 
 import category.data.Category;
+import category.repository.CategoryRepository;
+import category.service.CategoryService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,25 +15,30 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CategoryController {
 
-    @GetMapping("/categoryController")
-    public final Category getCategory(@RequestParam final long categoryID, @RequestParam final String nom) {
-        Category categorie = new Category();
-        categorie.setId(categoryID);
-        categorie.setValue(nom);
-        /*
-        String response;
+    private final CategoryService categoryService;
+    private final CategoryRepository categoryRepository;
 
-        if (answer == Boolean.TRUE) {
-// Ajouter des points
+    public CategoryController(final CategoryService categoryService, final CategoryRepository categoryRepository) {
+        this.categoryService = categoryService;
+        this.categoryRepository = categoryRepository;
+    }
 
-            response = "Bravo ! vous avez trouvé ! ";
-        } else {
-// Ne pas ajouter de points
+    @PostMapping("/updateTagFromCategorie")
+    public final void updateTagFromCategorie(@RequestParam final long idCategory, @RequestParam final String nameTag) {
+        Category category = categoryRepository.findCategoryById(idCategory);
+        System.out.println(category.getname());
+        categoryService.setTag(category, nameTag);
+        System.out.println(category.getIdTag());
+        System.out.println(category.getname());
+    }
 
-            response = "Oops ! Ca n'est pas correcte";
-        }
-         */
-        return categorie;
+    @PostMapping("/deleteTagFromCategorie")
+    public final void deleteTagFromCategorie(@RequestParam final long idCategory) {
+        Category category = categoryRepository.findCategoryById(idCategory);
+        System.out.println(category.getname());
+        System.out.println(category.getIdTag());
+        categoryService.deleteTag(category);
+        System.out.println(category.getIdTag());
     }
 
 }

@@ -1,20 +1,19 @@
 package fr.gamedev.user.data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * @author djer1
  *
  */
 @Entity
+@Table(name = "users")
 public class User {
 
     /**
      * id auto generated.
      */
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private long id;
     /**
@@ -25,6 +24,11 @@ public class User {
      * user last Name.
      */
     private String lastName;
+
+    public User()
+    {
+
+    }
 
     public User(long id, String login, String lastName) {
         this.id = id ;

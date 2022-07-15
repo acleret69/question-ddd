@@ -1,26 +1,29 @@
 package category.data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * @author djer1
  *
  */
 @Entity
+@Table(name = "category")
 public class Category {
 
     /**
      * id auto generated.
      */
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private long id;
     /**
      * category name.
      */
-    private String nom;
+    private String name;
+    /**
+     * id tag.
+     */
+    private long idTag;
 
     /**
      * @return the id
@@ -39,15 +42,23 @@ public class Category {
     /**
      * @return the value
      */
-    public String getnom() {
-        return nom;
+    public String getname() {
+        return name;
     }
 
     /**
-     * @param newNom the value to set
+     * @param newName the value to set
      */
-    public void setValue(final String newNom) {
-        this.nom = newNom;
+    public void setValue(final String newName) {
+        this.name = newName;
     }
 
+
+    public long getIdTag() {
+        return idTag;
+    }
+
+    public void setIdTag(long idTag) {
+        this.idTag = idTag;
+    }
 }

@@ -1,11 +1,15 @@
 package fr.gamedev.question.question.data;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "pendingResponse")
 public class PendingResponse {
 
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
     private  int IdUser;
+
     private  int IdQuestion;
 
     private  Enum<Status> Status;
