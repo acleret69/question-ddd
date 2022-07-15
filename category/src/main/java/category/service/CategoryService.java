@@ -20,6 +20,13 @@ public class CategoryService {
         category.setIdTag(tag.getId());
     }
 
+    public void updateCategory(Category category, String name, String valueCategorie)
+    {
+        Tag tag = tagRepository.findTagsByName(name);
+        category.setIdTag(tag.getId());
+        category.setValue(valueCategorie);
+    }
+
     public  void deleteTag(Category category)
     {
         category.setIdTag(0);

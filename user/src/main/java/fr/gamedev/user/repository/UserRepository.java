@@ -15,6 +15,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  */
 @RepositoryRestResource(collectionResourceRel = "users", path = "users")
 public interface UserRepository extends PagingAndSortingRepository<User, Long> {
-List<User> findByLastName(@Param("lastName") String lastName);
-
+User findByLastName(@Param("lastName") String lastName);
+User findUserById(@Param("id") Long id);
 }

@@ -14,11 +14,15 @@ public class TagService  {
         this.categoryRepository = categoryRepository;
     }
 
-    public void setCategory(Tag tag, String name)
+    public void setCategory(Tag tag, String nameCategory)
     {
+        tag.setCategory(categoryRepository.findCategoryByName(nameCategory));
+    }
 
-        tag.setCategory(categoryRepository.findCategoryByName(name));
-
+    public void updateTag(Tag tag, String nameCategory, String nameTag)
+    {
+        tag.setCategory(categoryRepository.findCategoryByName(nameCategory));
+        tag.setName(nameTag);
     }
 
     public  void deleteCategory(Tag tag)

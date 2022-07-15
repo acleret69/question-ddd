@@ -3,10 +3,7 @@ package category.controller;
 import category.data.Tag;
 import category.repository.TagRepository;
 import category.service.TagService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class TagController {
@@ -25,6 +22,14 @@ public class TagController {
         System.out.println("tag name : " + tag.getName());
         tagService.setCategory(tag, nameCategorie);
         System.out.println("category id :" + tag.getCategory().getId());
+        tagRepository.save(tag);
+    }
+
+    @PostMapping("/updateTag")
+    public final void updateTag(@RequestParam final long idTag, @RequestParam final String nameCategorie, @RequestParam final String nameTag) {
+        Tag tag = tagRepository.findTagsById(idTag);
+        tagService.updateTag(tag, nameCategorie, nameTag);
+        tagRepository.save(tag);
     }
 
     @PostMapping("/deleteCategorieFromTag")
@@ -34,5 +39,12 @@ public class TagController {
         tagService.deleteCategory(tag);
         System.out.println("category name : " +tag.getCategory().getname());
         System.out.println("category id : " +tag.getCategory().getId());
+        tagRepository.save(tag);
     }
+
+    @DeleteMapping("/deleteTagById")
+    public final void deleteTagById(@RequestParam final long idTag) {
+        tagRepository.deleteById(idTag);
+    }
+
 }

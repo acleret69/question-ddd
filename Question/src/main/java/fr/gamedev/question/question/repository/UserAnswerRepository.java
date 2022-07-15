@@ -11,5 +11,5 @@ import fr.gamedev.question.question.data.UserAnswer;
  */
 @RepositoryRestResource(collectionResourceRel = "usersAnswer", path = "usersAnswer")
 public interface UserAnswerRepository extends PagingAndSortingRepository<UserAnswer, Long> {
-
+    UserAnswer findUserAnswerById(long userAnswerId);
 }

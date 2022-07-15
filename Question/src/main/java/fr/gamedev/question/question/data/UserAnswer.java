@@ -41,7 +41,7 @@ public class UserAnswer {
     /**
      * response of user
      */
-    private String Response;
+    private String response;
 
 
     public long getId() {
@@ -87,14 +87,14 @@ public class UserAnswer {
      * @return the answer
      */
     public String getResponse() {
-        return Response;
+        return response;
     }
 
     /**
      * @param response the answer to set
      */
     public void setResponse(String response) {
-        Response = response;
+        response = response;
     }
 
     /**
