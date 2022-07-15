@@ -8,43 +8,43 @@ public class PendingResponse {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    private  long Id;
+    private  long id;
 
-    private  long IdUser;
+    private  long idUser;
 
-    private  long IdQuestion;
+    private  long idQuestion;
 
-    private  Enum<Status> Status;
+    private  Enum<Status> status;
 
     public long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(long id) {
-        Id = id;
+        this.id = id;
     }
 
     public long getIdUser() {
-        return IdUser;
+        return idUser;
     }
 
     public void setIdUser(long idUser) {
-        IdUser = idUser;
+        this.idUser = idUser;
     }
 
     public long getIdQuestion() {
-        return IdQuestion;
+        return idQuestion;
     }
 
     public void setIdQuestion(long idQuestion) {
-        IdQuestion = idQuestion;
+        this.idQuestion = idQuestion;
     }
 
     public Enum<fr.gamedev.question.question.data.Status> getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(Enum<fr.gamedev.question.question.data.Status> status) {
-        Status = status;
+        this.status = status;
     }
 }

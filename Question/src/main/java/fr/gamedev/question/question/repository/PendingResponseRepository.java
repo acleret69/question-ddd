@@ -9,5 +9,5 @@ import java.util.List;
 
 @RepositoryRestResource(collectionResourceRel = "pendingResponse", path = "pendingResponse")
 public interface PendingResponseRepository extends PagingAndSortingRepository<PendingResponse, Long> {
-   // List<PendingResponse> findPendingResponseByIdUser(@Param("IdUser") int IdUser);
+    List<PendingResponse> findPendingResponsesByIdUser(@Param("idUser") long idUser);
 }

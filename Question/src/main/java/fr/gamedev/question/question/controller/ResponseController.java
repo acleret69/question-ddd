@@ -61,42 +61,37 @@ public class ResponseController {
     }
 
     @PostMapping("/updateTagFromQuestion")
-    private void updateTagFromQuestion(@RequestParam final long questionId, @RequestParam final String nameTag)
-    {
+    private void updateTagFromQuestion(@RequestParam final long questionId, @RequestParam final String nameTag) {
         Question question = questionRepository.findQuestionById(questionId);
         questionService.setTag(question, nameTag);
         questionRepository.save(question);
     }
 
     @PostMapping("/updateQuestionById")
-    private void updateTagFromQuestion(@RequestParam final long questionId, @RequestParam final String content,@RequestParam final String correctAnswer)
-    {
+    private void updateTagFromQuestion(@RequestParam final long questionId, @RequestParam final String content,@RequestParam final String correctAnswer) {
         Question question = questionRepository.findQuestionById(questionId);
-        questionService.updateTag(question,content,correctAnswer);
+        questionService.updateTag(question, content, correctAnswer);
         questionRepository.save(question);
     }
 
     @PostMapping("/updateUserAnswerById")
     private void updateUserAnswerById(@RequestParam final long userAnswerId, @RequestParam final Integer points,
-                                      @RequestParam final boolean correctAnswer,@RequestParam final String response)
-    {
+                                      @RequestParam final boolean correctAnswer,@RequestParam final String response) {
         UserAnswer userAnswer = userAnswerRepository.findUserAnswerById(userAnswerId);
-        userAnswerService.updateUserAnswerById(userAnswer,points,correctAnswer,response);
+        userAnswerService.updateUserAnswerById(userAnswer, points, correctAnswer, response);
         userAnswerRepository.save(userAnswer);
     }
 
     @PostMapping("/updatePendingResponseAnswerById")
     private void updatePendingResponseAnswerById(@RequestParam final long userAnswerId, @RequestParam final Integer points,
-                                      @RequestParam final boolean correctAnswer,@RequestParam final String response)
-    {
+                                      @RequestParam final boolean correctAnswer,@RequestParam final String response) {
         UserAnswer userAnswer = userAnswerRepository.findUserAnswerById(userAnswerId);
-        userAnswerService.updateUserAnswerById(userAnswer,points,correctAnswer,response);
+        userAnswerService.updateUserAnswerById(userAnswer, points, correctAnswer, response);
         userAnswerRepository.save(userAnswer);
     }
 
     @PostMapping("/deleteTagFromQuestion")
-    private void deleteTagFromQuestion(@RequestParam final long questionId)
-    {
+    private void deleteTagFromQuestion(@RequestParam final long questionId) {
         Question question = questionRepository.findQuestionById(questionId);
         questionService.deleteTag(question);
         questionRepository.save(question);
@@ -113,25 +108,29 @@ public class ResponseController {
     }
 
     @GetMapping("/findQuestionByTagName")
-    public final List<Question> findQuestionByTagName(@RequestParam final String tagName)
-    {
+    public final List<Question> findQuestionByTagName(@RequestParam final String tagName) {
         return questionService.findQuestionsByTag(tagName);
     }
 
-
     @PostMapping("/userAnswer")
-    public final void userAnswer(@RequestParam final long Id,@RequestParam final long IdUser,
-                                 @RequestParam final long IdQuestion,@RequestParam String response) {
-
-        UserAnswer userAnswer = userAnswerService.initialiseUserAnswer(IdUser, IdQuestion, response);
-        PendingResponse pendingResponse = pendingResponseService.initialiseUserAnswer(IdUser, IdQuestion);
-
+    public final void userAnswer(@RequestParam final long Id, @RequestParam final long IdUser,
+                                 @RequestParam final long IdQuestion, @RequestParam String response) {
         Question question = questionRepository.findQuestionById(IdQuestion);
-        userAnswerService.setPoints(userAnswer, question, pendingResponse);
 
-        userAnswerRepository.save(userAnswer);
-        pendingResponseRepository.save(pendingResponse);
-
+        PendingResponse pending = pendingResponseService.checkUserPendingResponse(IdUser);
+        if (pending.getStatus() == Status.waitingForAnwer && pending.getIdUser() == IdUser) {
+            UserAnswer userAnswer = userAnswerRepository.findByIdUserAndIdQuestionAndResponse(IdUser, IdQuestion, "");
+            userAnswer.setResponse(response);
+            userAnswerService.setPoints(userAnswer, question, pending);
+            userAnswerRepository.save(userAnswer);
+            pendingResponseRepository.save(pending);
+        } else {
+            UserAnswer userAnswer = userAnswerService.initialiseUserAnswer(IdUser, IdQuestion, response);
+            PendingResponse pendingResponse = pendingResponseService.initialiseUserAnswer(IdUser, IdQuestion);
+            userAnswerService.setPoints(userAnswer, question, pendingResponse);
+            userAnswerRepository.save(userAnswer);
+            pendingResponseRepository.save(pendingResponse);
+        }
     }
 
 }

@@ -11,24 +11,18 @@ import java.util.Objects;
 @Service
 public class UserAnswerService {
 
-    public void updateUserAnswerById(UserAnswer userAnswer, Integer points, boolean correctAnswer , String response)
-    {
+    public void updateUserAnswerById(UserAnswer userAnswer, Integer points, boolean correctAnswer , String response) {
         userAnswer.setPoints(points);
         userAnswer.setCorrectAnswer(correctAnswer);
         userAnswer.setResponse(response);
     }
 
-    public void setPoints(UserAnswer userAnswer, Question question, PendingResponse pendingResponse)
-    {
-        if (userAnswer.getResponse() != null && !Objects.equals(userAnswer.getResponse(), ""))
-        {
-            if(Objects.equals(userAnswer.getResponse(), question.getCorrectAnswer()))
-            {
+    public void setPoints(UserAnswer userAnswer, Question question, PendingResponse pendingResponse) {
+        if (userAnswer.getResponse() != null && !Objects.equals(userAnswer.getResponse(), "")) {
+            if(Objects.equals(userAnswer.getResponse(), question.getCorrectAnswer())) {
                 userAnswer.setCorrectAnswer(true);
                 userAnswer.setPoints(5);
-            }
-            else
-            {
+            } else {
                 userAnswer.setCorrectAnswer(false);
                 userAnswer.setPoints(0);
             }
@@ -37,13 +31,9 @@ public class UserAnswerService {
         }
     }
 
-    public void checkUserPendingResponse()
-    {
 
-    }
 
-    public UserAnswer initialiseUserAnswer(Long IdUser, long IdQuestion, String response)
-    {
+    public UserAnswer initialiseUserAnswer(long IdUser, long IdQuestion, String response) {
         UserAnswer userAnswer = new UserAnswer();
         //userAnswser.setId();
         userAnswer.setIdUser(IdUser);
