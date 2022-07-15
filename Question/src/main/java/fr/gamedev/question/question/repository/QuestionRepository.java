@@ -6,6 +6,8 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import fr.gamedev.question.question.data.Question;
 
+import java.util.List;
+
 /**
  * @author djer1
  *
@@ -13,4 +15,5 @@ import fr.gamedev.question.question.data.Question;
 @RepositoryRestResource(collectionResourceRel = "question", path = "question")
 public interface QuestionRepository extends PagingAndSortingRepository<Question, Long> {
     Question findQuestionById(@Param("id") long id);
+    List<Question> findQuestionsByidTag(@Param("idTag") int idTag);
 }

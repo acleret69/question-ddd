@@ -1,5 +1,7 @@
 package fr.gamedev.user.controller;
 
+import ch.qos.logback.core.status.Status;
+import com.google.gson.JsonObject;
 import fr.gamedev.user.data.User;
 import fr.gamedev.user.repository.UserRepository;
 import fr.gamedev.user.service.UserService;
@@ -27,6 +29,13 @@ public class UserController {
         userService.updateUser(user, login, lastName);
         userRepository.save(user);
     }
+
+    @GetMapping("/findQuestionByTagName")
+    public final JsonObject findQuestionByTagName(@RequestParam final String tagName)
+    {
+        return userService.findQuestionByTagName(tagName);
+    }
+
 
 
     /* @GetMapping("/createUser")

@@ -21,12 +21,12 @@ public class UserAnswer {
      * User answering.
      */
 
-    private int idUser;
+    private long idUser;
     /**
      * Correct Answer.
      */
 
-    private int idQuestion;
+    private long idQuestion;
     /**
      * Points of the user on this answer.
      */
@@ -58,14 +58,14 @@ public class UserAnswer {
     /**
      * @return the user id
      */
-    public int getIdUser() {
+    public long getIdUser() {
         return idUser;
     }
 
     /**
      * @param idUser of the user to set
      */
-    public void setIdUser(int idUser) {
+    public void setIdUser(long idUser) {
         this.idUser = idUser;
     }
 
@@ -94,20 +94,20 @@ public class UserAnswer {
      * @param response the answer to set
      */
     public void setResponse(String response) {
-        response = response;
+        this.response = response;
     }
 
     /**
      * @return the idQuestion
      */
-    public int getIdQuestion() {
+    public long getIdQuestion() {
         return idQuestion;
     }
 
     /**
      * @param idQuestion the id question to set
      */
-    public void setIdQuestion(int idQuestion) {
+    public void setIdQuestion(long idQuestion) {
         this.idQuestion = idQuestion;
     }
 

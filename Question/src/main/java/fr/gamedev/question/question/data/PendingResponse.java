@@ -8,25 +8,35 @@ public class PendingResponse {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    private  int IdUser;
+    private  long Id;
 
-    private  int IdQuestion;
+    private  long IdUser;
+
+    private  long IdQuestion;
 
     private  Enum<Status> Status;
 
-    public int getIdUser() {
+    public long getId() {
+        return Id;
+    }
+
+    public void setId(long id) {
+        Id = id;
+    }
+
+    public long getIdUser() {
         return IdUser;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(long idUser) {
         IdUser = idUser;
     }
 
-    public int getIdQuestion() {
+    public long getIdQuestion() {
         return IdQuestion;
     }
 
-    public void setIdQuestion(int idQuestion) {
+    public void setIdQuestion(long idQuestion) {
         IdQuestion = idQuestion;
     }
 
