@@ -28,27 +28,27 @@ public class ResponseController {
     /**
      * The questionService.
      */
-    private final QuestionService questionService;
+    private final transient QuestionService questionService;
     /**
      * The questionRepository.
      */
-    private final QuestionRepository questionRepository;
+    private final transient QuestionRepository questionRepository;
     /**
      * The userAnswerService.
      */
-    private final UserAnswerService userAnswerService;
+    private final transient UserAnswerService userAnswerService;
     /**
      * The userAnswerRepository.
      */
-    private final UserAnswerRepository userAnswerRepository;
+    private final transient UserAnswerRepository userAnswerRepository;
     /**
      * The pendingResponseRepository.
      */
-    private final PendingResponseRepository pendingResponseRepository;
+    private final transient PendingResponseRepository pendingResponseRepository;
     /**
      * The pendingResponseService.
      */
-    private final PendingResponseService pendingResponseService;
+    private final transient PendingResponseService pendingResponseService;
 
     /**
      * ResponseController constructor.
@@ -85,7 +85,7 @@ public class ResponseController {
             @RequestParam final long userId) {
         String response;
 
-        if (answer == Boolean.TRUE) {
+        if (answer.equals(Boolean.TRUE)) {
             // Add points
             response = "Bravo ! vous avez trouvé ! ";
         } else {
@@ -216,7 +216,7 @@ public class ResponseController {
         Question question = questionRepository.findQuestionById(idQuestion);
 
         PendingResponse pending = pendingResponseService.checkUserPendingResponse(idUser);
-        if (pending.getStatus() == Status.waitingForAnwer && pending.getIdUser() == idUser) {
+        if (pending.getStatus() == Status.WAITING_FOR_ANSWER && pending.getIdUser() == idUser) {
             UserAnswer userAnswer = userAnswerRepository.findByIdUserAndIdQuestionAndResponse(idUser, idQuestion, "");
             userAnswer.setResponse(response);
             userAnswerService.setPoints(userAnswer, question, pending);

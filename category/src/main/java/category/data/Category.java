@@ -23,11 +23,16 @@ public class Category {
     /**
      * category name.
      */
-    private String name;
+    private transient String name;
     /**
      * id tag.
      */
-    private long idTag;
+    private transient long idTag;
+
+    /**
+     * Category constructor.
+     */
+    public Category() { }
 
     /**
      * @return the id

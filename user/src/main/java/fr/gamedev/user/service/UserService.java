@@ -31,7 +31,7 @@ public class UserService   {
      * @return a JsonObject
      */
     public static JsonObject findQuestionByTagName(final String tagName) {
-        final String uri = "http://localhost:8081/findQuestionByTagName?tagName=";
+        String uri = "http://localhost:8081/findQuestionByTagName?tagName=";
 
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri + tagName, String.class);

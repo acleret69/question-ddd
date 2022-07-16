@@ -33,6 +33,11 @@ public class Question {
     private int idTag;
 
     /**
+     * Question constructor.
+     */
+    public Question() { }
+
+    /**
      * @return the id
      */
     public long getId() {

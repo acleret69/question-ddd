@@ -26,6 +26,11 @@ public class PendingResponse {
     /**The Status Enum.*/
     private  Enum<Status> status;
 
+    /**
+     * PendingResponse constructor.
+     */
+    public PendingResponse() { }
+
     /**PendingResponse ID getter.
      * @return PendingResponse ID*/
     public long getId() {

@@ -16,11 +16,11 @@ public class TagController {
     /**
      * The tagService.
      */
-    private final TagService tagService;
+    private final transient TagService tagService;
     /**
      * The tagRepository.
      */
-    private final TagRepository tagRepository;
+    private final transient TagRepository tagRepository;
 
     /**
      * TagController constructor.

@@ -13,6 +13,10 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 @SpringBootApplication
 public class UserApplication implements RepositoryRestConfigurer {
    /**
+    * UserApplication constructor.
+    */
+   public UserApplication() { }
+   /**
     * main method.
     * @param args arguments
     */

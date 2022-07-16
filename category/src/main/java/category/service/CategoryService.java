@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class CategoryService {
 
     /** Tag Repository. */
-    private final TagRepository tagRepository;
+    private final transient TagRepository tagRepository;
 
     /** CategoryService constructor.
      * @param tagRepository the tag repository

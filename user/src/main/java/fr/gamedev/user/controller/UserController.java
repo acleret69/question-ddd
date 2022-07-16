@@ -18,11 +18,11 @@ public class UserController {
     /**
      * The userService.
      */
-    private final UserService userService;
+    private final transient UserService userService;
     /**
      * The userRepository.
      */
-    private final UserRepository userRepository;
+    private final transient UserRepository userRepository;
 
     /**
      * UserController constructor.

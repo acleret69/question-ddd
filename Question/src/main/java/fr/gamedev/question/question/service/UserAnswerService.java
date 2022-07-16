@@ -23,6 +23,11 @@ public class UserAnswerService {
     private static final int BAD_ANSWER_POINTS = 0;
 
     /**
+     * UserAnswerService constructor.
+     */
+    public UserAnswerService() { }
+
+    /**
      * updateUserAnswerById method.
      * @param userAnswer a userAnswer
      * @param points a number of points
@@ -57,7 +62,7 @@ public class UserAnswerService {
                 userAnswer.setCorrectAnswer(false);
                 userAnswer.setPoints(BAD_ANSWER_POINTS);
             }
-            pendingResponse.setStatus(Status.answered);
+            pendingResponse.setStatus(Status.ANSWERED);
 
         } else {
             userAnswer.setPoints(BAD_ANSWER_POINTS);

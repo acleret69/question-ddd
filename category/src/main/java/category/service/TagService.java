@@ -14,7 +14,7 @@ public class TagService  {
     /**
      * The categoryRepository.
      */
-    private final CategoryRepository categoryRepository;
+    private final transient CategoryRepository categoryRepository;
 
     /**
      * TagService constructor.

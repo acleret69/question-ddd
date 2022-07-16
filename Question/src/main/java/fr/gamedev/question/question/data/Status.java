@@ -7,15 +7,15 @@ public enum Status {
     /**
      * Status.answered.
      */
-    answered,
+    ANSWERED,
     /**
      * Status.Onhold.
      */
-    Onhold,
+    ONHOLD,
     /**
      * Status.waitingForAnwer.
      */
-    waitingForAnwer;
+    WAITING_FOR_ANSWER;
 
 
 }

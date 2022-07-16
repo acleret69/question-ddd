@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class QuestionService {
     /**The questionRepository.*/
-    private final QuestionRepository questionRepository;
+    private final transient QuestionRepository questionRepository;
 
     /**QuestionService constructor.
      * @param questionRepository the questionRepository*/
@@ -27,7 +27,7 @@ public class QuestionService {
      * @param question the question
      * @param nameTag the tag name*/
     public void setTag(final Question question, final String nameTag) {
-        final String uri = "http://localhost:8080/tag/search/findTagsByName?name=";
+        String uri = "http://localhost:8080/tag/search/findTagsByName?name=";
 
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri + nameTag, String.class);
@@ -71,7 +71,7 @@ public class QuestionService {
      */
     public List<Question> findQuestionsByTag(
             final String tagName) {
-        final String uri = "http://localhost:8080/tag/search/findTagsByName?name=";
+        String uri = "http://localhost:8080/tag/search/findTagsByName?name=";
 
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri + tagName, String.class);

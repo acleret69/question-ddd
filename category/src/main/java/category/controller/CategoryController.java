@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 public class CategoryController {
     /** The category service.
      */
-    private final CategoryService categoryService;
+    private final transient CategoryService categoryService;
     /** The category repository.
      */
-    private final CategoryRepository categoryRepository;
+    private final transient CategoryRepository categoryRepository;
 
     /** Constructor of CategoryController.
      * @param categoryService the category service

@@ -33,6 +33,11 @@ public class Tag {
     private Category category;
 
     /**
+     * Tag constructor.
+     */
+    public Tag() { }
+
+    /**
      * @return the id
      */
     public long getId() {

@@ -13,6 +13,10 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 @SpringBootApplication
 public class CategoryApplication implements RepositoryRestConfigurer {
    /**
+    * CategoryApplication constructor.
+    */
+   public CategoryApplication() { }
+   /**
     * Main method.
     * @param args arguments
     */

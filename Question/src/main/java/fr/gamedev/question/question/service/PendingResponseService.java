@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class PendingResponseService {
     /** The pendingResponseRepository.*/
-    private final PendingResponseRepository pendingResponseRepository;
+    private final transient PendingResponseRepository pendingResponseRepository;
 
     /**The constructor of PendingResponseService.
      * @param pendingResponseRepository the pendingResponseRepository*/
@@ -32,7 +32,7 @@ public class PendingResponseService {
 
         pendingResponse.setIdQuestion(idQuestion);
         pendingResponse.setIdUser(idUser);
-        pendingResponse.setStatus(Status.waitingForAnwer);
+        pendingResponse.setStatus(Status.WAITING_FOR_ANSWER);
 
         return  pendingResponse;
     }
@@ -44,7 +44,7 @@ public class PendingResponseService {
         try {
            List<PendingResponse> pendingResponse = pendingResponseRepository.findPendingResponsesByIdUser(idUser);
            for (PendingResponse pr : pendingResponse) {
-               if (pr.getStatus() == Status.waitingForAnwer) {
+               if (pr.getStatus() == Status.WAITING_FOR_ANSWER) {
                    return pr;
                }
            }

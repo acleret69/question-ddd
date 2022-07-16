@@ -46,6 +46,10 @@ public class UserAnswer {
      */
     private String response;
 
+    /**
+     * UserAnswer constructor.
+     */
+    public UserAnswer() { }
 
     /**
      * getId method.
