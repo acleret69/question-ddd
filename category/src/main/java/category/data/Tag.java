@@ -27,7 +27,7 @@ public class Tag {
     private String name;
 
     /**
-     * Liason avec category.
+     * Liaison avec category.
      */
     @ManyToOne
     private Category category;

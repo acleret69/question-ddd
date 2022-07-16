@@ -201,7 +201,6 @@ public class ResponseController {
 
     /**
      * userAnswer method.
-     * @param id an ID
      * @param idUser a user ID
      * @param idQuestion a question ID
      * @param response the response
@@ -209,7 +208,6 @@ public class ResponseController {
      */
     @PostMapping("/userAnswer")
     public final String userAnswer(
-            @RequestParam final long id,
             @RequestParam final long idUser,
             @RequestParam final long idQuestion,
             @RequestParam final String response) {
