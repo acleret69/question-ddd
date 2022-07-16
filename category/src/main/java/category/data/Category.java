@@ -23,7 +23,7 @@ public class Category {
     /**
      * category name.
      */
-    private transient String name;
+    private String name;
     /**
      * id tag.
      */
