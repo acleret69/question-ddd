@@ -32,14 +32,14 @@ public class CategoryService {
     /** updateCategory method.
      * @param category the category
      * @param name the tag name
-     * @param valueCategorie the category value*/
+     * @param categoryValue the category value*/
     public void updateCategory(
             final Category category,
             final String name,
-            final String valueCategorie) {
+            final String categoryValue) {
         final Tag tag = tagRepository.findTagsByName(name);
         category.setIdTag(tag.getId());
-        category.setValue(valueCategorie);
+        category.setValue(categoryValue);
     }
 
     /** deleteTag method.

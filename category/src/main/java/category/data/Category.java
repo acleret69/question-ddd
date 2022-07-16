@@ -51,7 +51,7 @@ public class Category {
     /**
      * @return the value
      */
-    public String getname() {
+    public String getName() {
         return name;
     }
 

@@ -33,56 +33,55 @@ public class TagController {
     }
 
     /**
-     * updateCategorieFromTag method.
-     * @param idTag a tag ID
-     * @param nameCategorie a category name
+     * updateCategoryFromTag method.
+     * @param tagId a tag ID
+     * @param categoryName a category name
      */
-    @PostMapping("/updateCategorieFromTag")
-    public final void updateCategorieFromTag(@RequestParam final long idTag, @RequestParam final String nameCategorie) {
-        final Tag tag = tagRepository.findTagsById(idTag);
+    @PostMapping("/updateCategoryFromTag")
+    public final void updateCategoryFromTag(@RequestParam final long tagId, @RequestParam final String categoryName) {
+        final Tag tag = tagRepository.findTagsById(tagId);
         System.out.println("tag name : " + tag.getName());
-        tagService.setCategory(tag, nameCategorie);
+        tagService.setCategory(tag, categoryName);
         System.out.println("category id :" + tag.getCategory().getId());
         tagRepository.save(tag);
     }
 
     /**
      * updateTag method.
-     * @param idTag the tag ID
-     * @param nameCategorie the category name
-     * @param nameTag the tag name
+     * @param tagId the tag ID
+     * @param categoryName the category name
+     * @param tagName the tag name
      */
     @PostMapping("/updateTag")
     public final void updateTag(
-            @RequestParam final long idTag,
-            @RequestParam final String nameCategorie,
-            @RequestParam final String nameTag) {
-        final Tag tag = tagRepository.findTagsById(idTag);
-        tagService.updateTag(tag, nameCategorie, nameTag);
+            @RequestParam final long tagId,
+            @RequestParam final String categoryName,
+            @RequestParam final String tagName) {
+        final Tag tag = tagRepository.findTagsById(tagId);
+        tagService.updateTag(tag, categoryName, tagName);
         tagRepository.save(tag);
     }
 
     /**
-     * deleteCategorieFromTag method.
-     * @param idTag the tag ID
+     * deleteCategoryFromTag method.
+     * @param tagId the tag ID
      */
-    @PostMapping("/deleteCategorieFromTag")
-    public final void deleteCategorieFromTag(@RequestParam final long idTag) {
-        final Tag tag = tagRepository.findTagsById(idTag);
+    @PostMapping("/deleteCategoryFromTag")
+    public final void deleteCategoryFromTag(@RequestParam final long tagId) {
+        final Tag tag = tagRepository.findTagsById(tagId);
         System.out.println("category id : " + tag.getCategory().getId());
         tagService.deleteCategory(tag);
-        System.out.println("category name : " + tag.getCategory().getname());
+        System.out.println("category name : " + tag.getCategory().getName());
         System.out.println("category id : " + tag.getCategory().getId());
         tagRepository.save(tag);
     }
 
     /**
      * deleteTagById method.
-     * @param idTag the tag ID
+     * @param tagId the tag ID
      */
     @DeleteMapping("/deleteTagById")
-    public final void deleteTagById(@RequestParam final long idTag) {
-        tagRepository.deleteById(idTag);
+    public final void deleteTagById(@RequestParam final long tagId) {
+        tagRepository.deleteById(tagId);
     }
-
 }
