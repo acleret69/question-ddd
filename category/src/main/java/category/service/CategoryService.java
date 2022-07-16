@@ -25,7 +25,7 @@ public class CategoryService {
      * @param category the tag category
      * @param name the tag name */
     public void setTag(final Category category, final String name) {
-        Tag tag = tagRepository.findTagsByName(name);
+        final Tag tag = tagRepository.findTagsByName(name);
         category.setIdTag(tag.getId());
     }
 
@@ -37,7 +37,7 @@ public class CategoryService {
             final Category category,
             final String name,
             final String valueCategorie) {
-        Tag tag = tagRepository.findTagsByName(name);
+        final Tag tag = tagRepository.findTagsByName(name);
         category.setIdTag(tag.getId());
         category.setValue(valueCategorie);
     }

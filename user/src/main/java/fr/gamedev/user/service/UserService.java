@@ -31,12 +31,12 @@ public class UserService   {
      * @return a JsonObject
      */
     public static JsonObject findQuestionByTagName(final String tagName) {
-        String uri = "http://localhost:8081/findQuestionByTagName?tagName=";
+        final String uri = "http://localhost:8081/findQuestionByTagName?tagName=";
 
-        RestTemplate restTemplate = new RestTemplate();
+        final RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri + tagName, String.class);
         result = result.replace("[", "").replace("]", "");
-        JsonObject jsonObject = new JsonParser().parse(result).getAsJsonObject();
+        final JsonObject jsonObject = new JsonParser().parse(result).getAsJsonObject();
 
         return jsonObject;
     }

@@ -39,7 +39,7 @@ public class TagController {
      */
     @PostMapping("/updateCategorieFromTag")
     public final void updateCategorieFromTag(@RequestParam final long idTag, @RequestParam final String nameCategorie) {
-        Tag tag = tagRepository.findTagsById(idTag);
+        final Tag tag = tagRepository.findTagsById(idTag);
         System.out.println("tag name : " + tag.getName());
         tagService.setCategory(tag, nameCategorie);
         System.out.println("category id :" + tag.getCategory().getId());
@@ -57,7 +57,7 @@ public class TagController {
             @RequestParam final long idTag,
             @RequestParam final String nameCategorie,
             @RequestParam final String nameTag) {
-        Tag tag = tagRepository.findTagsById(idTag);
+        final Tag tag = tagRepository.findTagsById(idTag);
         tagService.updateTag(tag, nameCategorie, nameTag);
         tagRepository.save(tag);
     }
@@ -68,7 +68,7 @@ public class TagController {
      */
     @PostMapping("/deleteCategorieFromTag")
     public final void deleteCategorieFromTag(@RequestParam final long idTag) {
-        Tag tag = tagRepository.findTagsById(idTag);
+        final Tag tag = tagRepository.findTagsById(idTag);
         System.out.println("category id : " + tag.getCategory().getId());
         tagService.deleteCategory(tag);
         System.out.println("category name : " + tag.getCategory().getname());

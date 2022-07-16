@@ -28,7 +28,7 @@ public class PendingResponseService {
     public PendingResponse initialiseUserAnswer(
             final long idUser,
             final long idQuestion) {
-        PendingResponse pendingResponse = new PendingResponse();
+        final PendingResponse pendingResponse = new PendingResponse();
 
         pendingResponse.setIdQuestion(idQuestion);
         pendingResponse.setIdUser(idUser);
@@ -42,8 +42,8 @@ public class PendingResponseService {
      * @return a pending response*/
     public PendingResponse checkUserPendingResponse(final long idUser) {
         try {
-           List<PendingResponse> pendingResponse = pendingResponseRepository.findPendingResponsesByIdUser(idUser);
-           for (PendingResponse pr : pendingResponse) {
+           final List<PendingResponse> pendingResponse = pendingResponseRepository.findPendingResponsesByIdUser(idUser);
+           for (final PendingResponse pr : pendingResponse) {
                if (pr.getStatus() == Status.WAITING_FOR_ANSWER) {
                    return pr;
                }

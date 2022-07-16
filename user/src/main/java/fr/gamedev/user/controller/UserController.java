@@ -57,7 +57,7 @@ public class UserController {
             @RequestParam final long idUser,
             @RequestParam final String login,
             @RequestParam final String lastName) {
-        User user = userRepository.findUserById(idUser);
+        final User user = userRepository.findUserById(idUser);
         userService.updateUser(user, login, lastName);
         userRepository.save(user);
     }

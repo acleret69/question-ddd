@@ -104,7 +104,7 @@ public class ResponseController {
     private void updateTagFromQuestion(
             @RequestParam final long questionId,
             @RequestParam final String nameTag) {
-        Question question = questionRepository.findQuestionById(questionId);
+        final Question question = questionRepository.findQuestionById(questionId);
         questionService.setTag(question, nameTag);
         questionRepository.save(question);
     }
@@ -120,7 +120,7 @@ public class ResponseController {
             @RequestParam final long questionId,
             @RequestParam final String content,
             @RequestParam final String correctAnswer) {
-        Question question = questionRepository.findQuestionById(questionId);
+        final Question question = questionRepository.findQuestionById(questionId);
         questionService.updateTag(question, content, correctAnswer);
         questionRepository.save(question);
     }
@@ -137,7 +137,7 @@ public class ResponseController {
                                       @RequestParam final Integer points,
                                       @RequestParam final boolean correctAnswer,
                                       @RequestParam final String response) {
-        UserAnswer userAnswer = userAnswerRepository.findUserAnswerById(userAnswerId);
+        final UserAnswer userAnswer = userAnswerRepository.findUserAnswerById(userAnswerId);
         userAnswerService.updateUserAnswerById(userAnswer, points, correctAnswer, response);
         userAnswerRepository.save(userAnswer);
     }
@@ -155,7 +155,7 @@ public class ResponseController {
             @RequestParam final Integer points,
             @RequestParam final boolean correctAnswer,
             @RequestParam final String response) {
-        UserAnswer userAnswer = userAnswerRepository.findUserAnswerById(userAnswerId);
+        final UserAnswer userAnswer = userAnswerRepository.findUserAnswerById(userAnswerId);
         userAnswerService.updateUserAnswerById(userAnswer, points, correctAnswer, response);
         userAnswerRepository.save(userAnswer);
     }
@@ -166,7 +166,7 @@ public class ResponseController {
      */
     @PostMapping("/deleteTagFromQuestion")
     private void deleteTagFromQuestion(@RequestParam final long questionId) {
-        Question question = questionRepository.findQuestionById(questionId);
+        final Question question = questionRepository.findQuestionById(questionId);
         questionService.deleteTag(question);
         questionRepository.save(question);
     }
@@ -213,24 +213,27 @@ public class ResponseController {
             @RequestParam final long idUser,
             @RequestParam final long idQuestion,
             @RequestParam final String response) {
-        Question question = questionRepository.findQuestionById(idQuestion);
+        final Question question = questionRepository.findQuestionById(idQuestion);
 
-        PendingResponse pending = pendingResponseService.checkUserPendingResponse(idUser);
+        final PendingResponse pending = pendingResponseService.checkUserPendingResponse(idUser);
+        String result = "";
         if (pending.getStatus() == Status.WAITING_FOR_ANSWER && pending.getIdUser() == idUser) {
-            UserAnswer userAnswer = userAnswerRepository.findByIdUserAndIdQuestionAndResponse(idUser, idQuestion, "");
+            final UserAnswer userAnswer =
+                    userAnswerRepository.findByIdUserAndIdQuestionAndResponse(idUser, idQuestion, "");
             userAnswer.setResponse(response);
             userAnswerService.setPoints(userAnswer, question, pending);
             userAnswerRepository.save(userAnswer);
             pendingResponseRepository.save(pending);
-            return  ("Vous avez gagner : " + userAnswer.getPoints() + " points");
+            result = "You have earned : " + userAnswer.getPoints() + " points";
         } else {
-            UserAnswer userAnswer = userAnswerService.initialiseUserAnswer(idUser, idQuestion, response);
-            PendingResponse pendingResponse = pendingResponseService.initialiseUserAnswer(idUser, idQuestion);
+            final UserAnswer userAnswer = userAnswerService.initialiseUserAnswer(idUser, idQuestion, response);
+            final PendingResponse pendingResponse = pendingResponseService.initialiseUserAnswer(idUser, idQuestion);
             userAnswerService.setPoints(userAnswer, question, pendingResponse);
             userAnswerRepository.save(userAnswer);
             pendingResponseRepository.save(pendingResponse);
-            return  ("Vous avez gagner : " + userAnswer.getPoints() + " points");
+            result = "You have earned : " + userAnswer.getPoints() + " points";
         }
+        return result;
     }
 
 }

@@ -40,7 +40,7 @@ public class CategoryController {
     public final void updateTagFromCategorie(
             @RequestParam final long idCategory,
             @RequestParam final String nameTag) {
-        Category category = categoryRepository.findCategoryById(idCategory);
+        final Category category = categoryRepository.findCategoryById(idCategory);
         System.out.println(category.getname());
         categoryService.setTag(category, nameTag);
         System.out.println(category.getIdTag());
@@ -54,7 +54,7 @@ public class CategoryController {
     @PostMapping("/deleteTagFromCategorie")
     public final void deleteTagFromCategorie(
             @RequestParam final long idCategory) {
-        Category category = categoryRepository.findCategoryById(idCategory);
+        final Category category = categoryRepository.findCategoryById(idCategory);
         System.out.println(category.getname());
         System.out.println(category.getIdTag());
         categoryService.deleteTag(category);
@@ -72,7 +72,7 @@ public class CategoryController {
             @RequestParam final long idCategory,
             @RequestParam final String nameTag,
             @RequestParam final String valueCategory) {
-        Category category = categoryRepository.findCategoryById(idCategory);
+        final Category category = categoryRepository.findCategoryById(idCategory);
         categoryService.updateCategory(category, nameTag, valueCategory);
         categoryRepository.save(category);
     }

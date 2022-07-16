@@ -31,6 +31,17 @@
 		</properties>
 	</rule>
 
+	<rule ref="rulesets/java/naming.xml">
+		<exclude name="AvoidDollarSigns"/>
+		<exclude name="ShortVariable"/>
+		<exclude name="LongVariable"/>
+		<exclude name="AvoidFieldNameMatchingMethodName"/>
+	</rule>
+
+	<rule ref="rulesets/java/codestyle.xml">
+		<exclude name="ShortClassName"/>
+	</rule>
+
 	<!-- We want everything from braces.xml except WhileLoopsMustUseBraces -->
 	<!--<rule ref="rulesets/java/braces.xml">
        <exclude name="WhileLoopsMustUseBraces"/>

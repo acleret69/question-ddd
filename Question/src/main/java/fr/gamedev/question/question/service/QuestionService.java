@@ -27,14 +27,14 @@ public class QuestionService {
      * @param question the question
      * @param nameTag the tag name*/
     public void setTag(final Question question, final String nameTag) {
-        String uri = "http://localhost:8080/tag/search/findTagsByName?name=";
+        final String uri = "http://localhost:8080/tag/search/findTagsByName?name=";
 
-        RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject(uri + nameTag, String.class);
-        JsonObject jsonObject = new JsonParser().parse(result).getAsJsonObject();
+        final RestTemplate restTemplate = new RestTemplate();
+        final String result = restTemplate.getForObject(uri + nameTag, String.class);
+        final JsonObject jsonObject = new JsonParser().parse(result).getAsJsonObject();
 
         System.out.println("question tag id : " + question.getIdTag());
-        int id = Integer.parseInt(String.valueOf(jsonObject.get("id")));
+        final int id = Integer.parseInt(String.valueOf(jsonObject.get("id")));
         System.out.println("id from tag: " + id);
 
         question.setIdTag(id);
@@ -71,13 +71,13 @@ public class QuestionService {
      */
     public List<Question> findQuestionsByTag(
             final String tagName) {
-        String uri = "http://localhost:8080/tag/search/findTagsByName?name=";
+        final String uri = "http://localhost:8080/tag/search/findTagsByName?name=";
 
-        RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject(uri + tagName, String.class);
-        JsonObject jsonObject = new JsonParser().parse(result).getAsJsonObject();
+        final RestTemplate restTemplate = new RestTemplate();
+        final String result = restTemplate.getForObject(uri + tagName, String.class);
+        final JsonObject jsonObject = new JsonParser().parse(result).getAsJsonObject();
 
-        int idTag = Integer.parseInt(String.valueOf(jsonObject.get("id")));
+        final int idTag = Integer.parseInt(String.valueOf(jsonObject.get("id")));
         return questionRepository.findQuestionsByidTag(idTag);
     }
 }

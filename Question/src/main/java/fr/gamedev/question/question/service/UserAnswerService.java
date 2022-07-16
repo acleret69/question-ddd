@@ -80,7 +80,7 @@ public class UserAnswerService {
             final long idUser,
             final long idQuestion,
             final String response) {
-        UserAnswer userAnswer = new UserAnswer();
+        final UserAnswer userAnswer = new UserAnswer();
         userAnswer.setIdUser(idUser);
         userAnswer.setIdQuestion(idQuestion);
         userAnswer.setResponse(response);

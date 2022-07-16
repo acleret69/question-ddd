@@ -55,7 +55,7 @@ public class TagService  {
      * @param tag a tag
      */
     public  void deleteCategory(final Tag tag) {
-        Category category = new Category();
+        final Category category = new Category();
         tag.setCategory(category);
     }
 }

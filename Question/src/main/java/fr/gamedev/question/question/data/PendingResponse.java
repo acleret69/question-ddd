@@ -26,11 +26,6 @@ public class PendingResponse {
     /**The Status Enum.*/
     private  Enum<Status> status;
 
-    /**
-     * PendingResponse constructor.
-     */
-    public PendingResponse() { }
-
     /**PendingResponse ID getter.
      * @return PendingResponse ID*/
     public long getId() {
@@ -69,14 +64,14 @@ public class PendingResponse {
 
     /**Status getter.
      * @return status*/
-    public Enum<fr.gamedev.question.question.data.Status> getStatus() {
+    public Enum<Status> getStatus() {
         return status;
     }
 
     /**Status setter.
      * @param status the status*/
     public void setStatus(
-            final Enum<fr.gamedev.question.question.data.Status> status) {
+            final Enum<Status> status) {
 
         this.status = status;
     }
