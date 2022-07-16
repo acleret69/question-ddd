@@ -1,4 +1,4 @@
-package fr.gamedev.question.question.data;
+package question.data;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -45,10 +45,10 @@ public class Question {
     }
 
     /**
-     * @param newid the id to set
+     * @param newId the id to set
      */
-    public void setId(final long newid) {
-        this.id = newid;
+    public void setId(final long newId) {
+        this.id = newId;
     }
 
     /**
@@ -73,10 +73,10 @@ public class Question {
     }
 
     /**
-     * @param newcontent the content to set
+     * @param newContent the content to set
      */
-    public void setContent(final String newcontent) {
-        this.content = newcontent;
+    public void setContent(final String newContent) {
+        this.content = newContent;
     }
 
 
@@ -88,10 +88,10 @@ public class Question {
     }
 
     /**
-     * @param newidTag the id to set
+     * @param newIdTag the id to set
      */
-    public void setIdTag(final int newidTag) {
-        this.idTag = newidTag;
+    public void setIdTag(final int newIdTag) {
+        this.idTag = newIdTag;
     }
 
 }

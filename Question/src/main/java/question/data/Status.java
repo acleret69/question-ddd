@@ -1,4 +1,4 @@
-package fr.gamedev.question.question.data;
+package question.data;
 
 /**
  * Status enum.
@@ -9,13 +9,13 @@ public enum Status {
      */
     ANSWERED,
     /**
-     * Status.Onhold.
+     * Status.OnHold.
      */
-    ONHOLD,
+    ON_HOLD,
     /**
-     * Status.waitingForAnwer.
+     * Status.waitingForAnswer.
      */
-    WAITING_FOR_ANSWER;
+    WAITING_FOR_ANSWER
 
 
 }

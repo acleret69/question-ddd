@@ -1,4 +1,4 @@
-package fr.gamedev.question.question.data;
+package question.data;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

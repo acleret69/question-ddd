@@ -1,8 +1,8 @@
-package fr.gamedev.question.question.service;
+package question.service;
 
-import fr.gamedev.question.question.data.PendingResponse;
-import fr.gamedev.question.question.data.Status;
-import fr.gamedev.question.question.repository.PendingResponseRepository;
+import question.data.PendingResponse;
+import question.data.Status;
+import question.repository.PendingResponseRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

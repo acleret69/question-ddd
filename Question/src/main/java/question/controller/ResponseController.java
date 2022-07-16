@@ -1,15 +1,15 @@
-package fr.gamedev.question.question.controller;
+package question.controller;
 
-import fr.gamedev.question.question.data.PendingResponse;
-import fr.gamedev.question.question.data.Question;
-import fr.gamedev.question.question.data.Status;
-import fr.gamedev.question.question.data.UserAnswer;
-import fr.gamedev.question.question.repository.PendingResponseRepository;
-import fr.gamedev.question.question.repository.QuestionRepository;
-import fr.gamedev.question.question.repository.UserAnswerRepository;
-import fr.gamedev.question.question.service.PendingResponseService;
-import fr.gamedev.question.question.service.QuestionService;
-import fr.gamedev.question.question.service.UserAnswerService;
+import question.data.PendingResponse;
+import question.data.Question;
+import question.data.Status;
+import question.data.UserAnswer;
+import question.repository.PendingResponseRepository;
+import question.repository.QuestionRepository;
+import question.repository.UserAnswerRepository;
+import question.service.PendingResponseService;
+import question.service.QuestionService;
+import question.service.UserAnswerService;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -97,7 +97,7 @@ public class ResponseController {
 
     /**
      * updateTagFromQuestion method.
-     * @param questionId the question Id
+     * @param questionId the question id
      * @param nameTag the tag name
      */
     @PostMapping("/updateTagFromQuestion")

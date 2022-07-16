@@ -1,9 +1,9 @@
-package fr.gamedev.question.question.service;
+package question.service;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import fr.gamedev.question.question.data.Question;
-import fr.gamedev.question.question.repository.QuestionRepository;
+import question.data.Question;
+import question.repository.QuestionRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -78,6 +78,6 @@ public class QuestionService {
         final JsonObject jsonObject = new JsonParser().parse(result).getAsJsonObject();
 
         final int idTag = Integer.parseInt(String.valueOf(jsonObject.get("id")));
-        return questionRepository.findQuestionsByidTag(idTag);
+        return questionRepository.findQuestionsByIdTag(idTag);
     }
 }

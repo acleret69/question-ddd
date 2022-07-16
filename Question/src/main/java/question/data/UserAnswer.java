@@ -1,4 +1,4 @@
-package fr.gamedev.question.question.data;
+package question.data;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -53,7 +53,7 @@ public class UserAnswer {
 
     /**
      * getId method.
-     * @return a useranswer ID
+     * @return a userAnswer ID
      */
     public long getId() {
         return id;
