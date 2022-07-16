@@ -2,8 +2,6 @@
  */
 package fr.gamedev.user.repository;
 
-import java.util.List;
-
 import fr.gamedev.user.data.User;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;

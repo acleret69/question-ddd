@@ -7,7 +7,14 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
 
-@RepositoryRestResource(collectionResourceRel = "pendingResponse", path = "pendingResponse")
-public interface PendingResponseRepository extends PagingAndSortingRepository<PendingResponse, Long> {
-    List<PendingResponse> findPendingResponsesByIdUser(@Param("idUser") long idUser);
+@RepositoryRestResource(
+        collectionResourceRel = "pendingResponse",
+        path = "pendingResponse")
+public interface PendingResponseRepository
+        extends PagingAndSortingRepository<PendingResponse, Long> {
+    /**findPendingResponsesByIdUser method.
+     * @param idUser the user ID
+     * @return a list of PendingResponse*/
+    List<PendingResponse> findPendingResponsesByIdUser(
+            @Param("idUser") long idUser);
 }

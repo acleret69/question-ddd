@@ -1,7 +1,5 @@
 package fr.gamedev.question.question.controller;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import fr.gamedev.question.question.data.PendingResponse;
 import fr.gamedev.question.question.data.Question;
 import fr.gamedev.question.question.data.Status;
@@ -12,11 +10,13 @@ import fr.gamedev.question.question.repository.UserAnswerRepository;
 import fr.gamedev.question.question.service.PendingResponseService;
 import fr.gamedev.question.question.service.QuestionService;
 import fr.gamedev.question.question.service.UserAnswerService;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * @author djer1
@@ -25,66 +25,116 @@ import java.util.Objects;
 @RestController
 public class ResponseController {
 
+    /**
+     * The questionService.
+     */
     private final QuestionService questionService;
+    /**
+     * The questionRepository.
+     */
     private final QuestionRepository questionRepository;
+    /**
+     * The userAnswerService.
+     */
     private final UserAnswerService userAnswerService;
+    /**
+     * The userAnswerRepository.
+     */
     private final UserAnswerRepository userAnswerRepository;
-    private final PendingResponseRepository pendingResponseRepository ;
+    /**
+     * The pendingResponseRepository.
+     */
+    private final PendingResponseRepository pendingResponseRepository;
+    /**
+     * The pendingResponseService.
+     */
     private final PendingResponseService pendingResponseService;
 
-    public ResponseController(final QuestionService questionService, final QuestionRepository questionRepository,
-                              final UserAnswerService userAnswerService, final UserAnswerRepository userAnswerRepository,
-                              final PendingResponseRepository pendingResponseRepository, final PendingResponseService pendingResponseService) {
+    /**
+     * ResponseController constructor.
+     * @param questionService the questionService
+     * @param questionRepository the questionRepository
+     * @param userAnswerService the userAnswerService
+     * @param userAnswerRepository the userAnswerRepository
+     * @param pendingResponseRepository the pendingResponseRepository
+     * @param pendingResponseService the pendingResponseService
+     */
+    public ResponseController(final QuestionService questionService,
+                              final QuestionRepository questionRepository,
+                              final UserAnswerService userAnswerService,
+                              final UserAnswerRepository userAnswerRepository,
+                              final PendingResponseRepository pendingResponseRepository,
+                              final PendingResponseService pendingResponseService) {
         this.questionService = questionService;
         this.questionRepository = questionRepository;
         this.userAnswerService = userAnswerService;
-        this.userAnswerRepository =userAnswerRepository;
-        this.pendingResponseRepository=pendingResponseRepository;
+        this.userAnswerRepository = userAnswerRepository;
+        this.pendingResponseRepository = pendingResponseRepository;
         this.pendingResponseService = pendingResponseService;
     }
 
+    /**
+     * Gives a response if the answer is correct or not.
+     * @param questionId the question ID
+     * @param answer the answer
+     * @param userId the user ID
+     * @return the response as a string
+     */
     @GetMapping("/response")
     public final String answer(@RequestParam final long questionId, @RequestParam final Boolean answer,
             @RequestParam final long userId) {
         String response;
 
         if (answer == Boolean.TRUE) {
-// Ajouter des points
-
+            // Add points
             response = "Bravo ! vous avez trouvé ! ";
         } else {
-// Ne pas ajouter de points
-
+            // Do not add points
             response = "Oops ! Ca n'est pas correcte";
         }
         return response;
     }
 
+    /**
+     * updateTagFromQuestion method.
+     * @param questionId the question Id
+     * @param nameTag the tag name
+     */
     @PostMapping("/updateTagFromQuestion")
-    private void updateTagFromQuestion(@RequestParam final long questionId, @RequestParam final String nameTag) {
+    private void updateTagFromQuestion(
+            @RequestParam final long questionId,
+            @RequestParam final String nameTag) {
         Question question = questionRepository.findQuestionById(questionId);
         questionService.setTag(question, nameTag);
         questionRepository.save(question);
     }
 
     @PostMapping("/updateQuestionById")
-    private void updateTagFromQuestion(@RequestParam final long questionId, @RequestParam final String content,@RequestParam final String correctAnswer) {
+    private void updateTagFromQuestion(
+            @RequestParam final long questionId,
+            @RequestParam final String content,
+            @RequestParam final String correctAnswer) {
         Question question = questionRepository.findQuestionById(questionId);
         questionService.updateTag(question, content, correctAnswer);
         questionRepository.save(question);
     }
 
     @PostMapping("/updateUserAnswerById")
-    private void updateUserAnswerById(@RequestParam final long userAnswerId, @RequestParam final Integer points,
-                                      @RequestParam final boolean correctAnswer,@RequestParam final String response) {
+    private void updateUserAnswerById(@RequestParam final long userAnswerId,
+                                      @RequestParam final Integer points,
+                                      @RequestParam final boolean correctAnswer,
+                                      @RequestParam final String response) {
         UserAnswer userAnswer = userAnswerRepository.findUserAnswerById(userAnswerId);
         userAnswerService.updateUserAnswerById(userAnswer, points, correctAnswer, response);
         userAnswerRepository.save(userAnswer);
     }
 
     @PostMapping("/updatePendingResponseAnswerById")
-    private void updatePendingResponseAnswerById(@RequestParam final long userAnswerId, @RequestParam final Integer points,
-                                      @RequestParam final boolean correctAnswer,@RequestParam final String response) {
+    private void updatePendingResponseAnswerById(
+            @RequestParam final long userAnswerId,
+            @RequestParam final Integer points,
+            @RequestParam final boolean correctAnswer,
+            @RequestParam final String response) {
         UserAnswer userAnswer = userAnswerRepository.findUserAnswerById(userAnswerId);
         userAnswerService.updateUserAnswerById(userAnswer, points, correctAnswer, response);
         userAnswerRepository.save(userAnswer);
@@ -113,21 +163,24 @@ public class ResponseController {
     }
 
     @PostMapping("/userAnswer")
-    public final String userAnswer(@RequestParam final long Id, @RequestParam final long IdUser,
-                                 @RequestParam final long IdQuestion, @RequestParam String response) {
-        Question question = questionRepository.findQuestionById(IdQuestion);
+    public final String userAnswer(
+            @RequestParam final long id,
+            @RequestParam final long idUser,
+            @RequestParam final long idQuestion,
+            @RequestParam final String response) {
+        Question question = questionRepository.findQuestionById(idQuestion);
 
-        PendingResponse pending = pendingResponseService.checkUserPendingResponse(IdUser);
-        if (pending.getStatus() == Status.waitingForAnwer && pending.getIdUser() == IdUser) {
-            UserAnswer userAnswer = userAnswerRepository.findByIdUserAndIdQuestionAndResponse(IdUser, IdQuestion, "");
+        PendingResponse pending = pendingResponseService.checkUserPendingResponse(idUser);
+        if (pending.getStatus() == Status.waitingForAnwer && pending.getIdUser() == idUser) {
+            UserAnswer userAnswer = userAnswerRepository.findByIdUserAndIdQuestionAndResponse(idUser, idQuestion, "");
             userAnswer.setResponse(response);
             userAnswerService.setPoints(userAnswer, question, pending);
             userAnswerRepository.save(userAnswer);
             pendingResponseRepository.save(pending);
             return  ("Vous avez gagner : " + userAnswer.getPoints() + " points");
         } else {
-            UserAnswer userAnswer = userAnswerService.initialiseUserAnswer(IdUser, IdQuestion, response);
-            PendingResponse pendingResponse = pendingResponseService.initialiseUserAnswer(IdUser, IdQuestion);
+            UserAnswer userAnswer = userAnswerService.initialiseUserAnswer(idUser, idQuestion, response);
+            PendingResponse pendingResponse = pendingResponseService.initialiseUserAnswer(idUser, idQuestion);
             userAnswerService.setPoints(userAnswer, question, pendingResponse);
             userAnswerRepository.save(userAnswer);
             pendingResponseRepository.save(pendingResponse);

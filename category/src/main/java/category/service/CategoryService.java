@@ -8,28 +8,40 @@ import org.springframework.stereotype.Service;
 @Service
 public class CategoryService {
 
+    /** Tag Repository. */
     private final TagRepository tagRepository;
 
-    public CategoryService(TagRepository tagRepository) {
+    /** CategoryService constructor.
+     * @param tagRepository the tag repository
+     */
+    public CategoryService(final TagRepository tagRepository) {
         this.tagRepository = tagRepository;
     }
 
-    public void setTag(Category category, String name)
-    {
+    /** Tag setter.
+     * @param category the tag category
+     * @param name the tag name */
+    public void setTag(final Category category, final String name) {
         Tag tag = tagRepository.findTagsByName(name);
         category.setIdTag(tag.getId());
     }
 
-    public void updateCategory(Category category, String name, String valueCategorie)
-    {
+    /** updateCategory method.
+     * @param category the category
+     * @param name the tag name
+     * @param valueCategorie the category value*/
+    public void updateCategory(
+            final Category category,
+            final String name,
+            final String valueCategorie) {
         Tag tag = tagRepository.findTagsByName(name);
         category.setIdTag(tag.getId());
         category.setValue(valueCategorie);
     }
 
-    public  void deleteTag(Category category)
-    {
+    /** deleteTag method.
+     * @param category the category*/
+    public void deleteTag(final Category category) {
         category.setIdTag(0);
     }
-
 }

@@ -1,26 +1,30 @@
 package fr.gamedev.question.question.service;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import fr.gamedev.question.question.data.PendingResponse;
 import fr.gamedev.question.question.data.Status;
 import fr.gamedev.question.question.repository.PendingResponseRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
 @Service
 public class PendingResponseService {
-
+    /**the pendingResponseRepository.*/
     private final PendingResponseRepository pendingResponseRepository;
 
+    /**The constructor of PendingResponseService.
+     * @param pendingResponseRepository the pendingResponseRepository*/
     public PendingResponseService(final PendingResponseRepository pendingResponseRepository) {
         this.pendingResponseRepository = pendingResponseRepository;
     }
 
-
-    public PendingResponse initialiseUserAnswer(long idUser, long idQuestion) {
+    /** initialiseUserAnswer method.
+     * @param idUser the user ID
+     * @param idQuestion the question ID
+     * @return a pending response*/
+    public PendingResponse initialiseUserAnswer(
+            final long idUser,
+            final long idQuestion) {
         PendingResponse pendingResponse = new PendingResponse();
 
         pendingResponse.setIdQuestion(idQuestion);
@@ -30,7 +34,10 @@ public class PendingResponseService {
         return  pendingResponse;
     }
 
-    public PendingResponse checkUserPendingResponse(long idUser) {
+    /** checkUserPendingResponse method.
+     * @param idUser the user ID
+     * @return a pending response*/
+    public PendingResponse checkUserPendingResponse(final long idUser) {
         try {
            List<PendingResponse> pendingResponse = pendingResponseRepository.findPendingResponsesByIdUser(idUser);
            for (PendingResponse pr : pendingResponse) {
@@ -39,15 +46,6 @@ public class PendingResponseService {
                }
            }
             return new PendingResponse();
-            //final String uri = "http://localhost:8081/findPendingResponsesByIdUser?idUser=";
-
-           /* RestTemplate restTemplate = new RestTemplate();
-            String result = restTemplate.getForObject(uri + idUser, String.class);
-            result = result.replace("[", "").replace("]", "");
-            JsonObject jsonObject = new JsonParser().parse(result).getAsJsonObject();
-            System.out.println(jsonObject);
-            return new PendingResponse();*/
-
         } catch (Exception e) {
             return new PendingResponse();
         }

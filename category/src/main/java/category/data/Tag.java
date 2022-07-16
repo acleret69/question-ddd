@@ -1,6 +1,11 @@
 package category.data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * @author djer1
@@ -11,14 +16,13 @@ import javax.persistence.*;
 public class Tag {
 
     /**
-     * id auto generated.
+     * The auto generated ID.
      */
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private long id;
-    
     /**
-     * tag name.
+     * The tag name.
      */
     private String name;
 
@@ -56,11 +60,19 @@ public class Tag {
         this.name = newName;
     }
 
+    /**
+     * getCategory method.
+     * @return a category
+     */
     public Category getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    /**
+     * setCategory method.
+     * @param category a category
+     */
+    public void setCategory(final Category category) {
         this.category = category;
     }
 

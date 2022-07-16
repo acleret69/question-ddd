@@ -1,6 +1,10 @@
 package category.data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * @author djer1
@@ -53,12 +57,17 @@ public class Category {
         this.name = newName;
     }
 
-
+    /**
+     * @return the Tag Id
+     */
     public long getIdTag() {
         return idTag;
     }
 
-    public void setIdTag(long idTag) {
+    /**
+     * @param idTag  the Id Tag
+     */
+    public void setIdTag(final long idTag) {
         this.idTag = idTag;
     }
 }

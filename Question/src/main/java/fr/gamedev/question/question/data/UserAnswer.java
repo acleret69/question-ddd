@@ -1,7 +1,10 @@
 package fr.gamedev.question.question.data;
 
-import javax.persistence.*;
-
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * @author djer1
@@ -34,16 +37,20 @@ public class UserAnswer {
     private Integer points;
 
     /**
-     * true or false if response is good
+     * true or false if response is good.
      */
      private boolean correctAnswer;
 
     /**
-     * response of user
+     * response of user.
      */
     private String response;
 
 
+    /**
+     * getId method.
+     * @return a useranswer ID
+     */
     public long getId() {
         return id;
     }
@@ -65,7 +72,7 @@ public class UserAnswer {
     /**
      * @param idUser of the user to set
      */
-    public void setIdUser(long idUser) {
+    public void setIdUser(final long idUser) {
         this.idUser = idUser;
     }
 
@@ -93,7 +100,7 @@ public class UserAnswer {
     /**
      * @param response the answer to set
      */
-    public void setResponse(String response) {
+    public void setResponse(final String response) {
         this.response = response;
     }
 
@@ -107,7 +114,7 @@ public class UserAnswer {
     /**
      * @param idQuestion the id question to set
      */
-    public void setIdQuestion(long idQuestion) {
+    public void setIdQuestion(final long idQuestion) {
         this.idQuestion = idQuestion;
     }
 
@@ -121,7 +128,7 @@ public class UserAnswer {
     /**
      * @param correctAnswer Correct answer to set
      */
-    public void setCorrectAnswer(boolean correctAnswer) {
+    public void setCorrectAnswer(final boolean correctAnswer) {
         this.correctAnswer = correctAnswer;
     }
 

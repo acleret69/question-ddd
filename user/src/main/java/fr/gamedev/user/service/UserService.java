@@ -8,13 +8,15 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class UserService   {
-
-    public static void updateUser(User user, String login, String lastName) {
+    public static void updateUser(
+            final User user,
+            final String login,
+            final String lastName) {
         user.setLastName(lastName);
         user.setLogin(login);
     }
 
-    public static JsonObject findQuestionByTagName(String tagName) {
+    public static JsonObject findQuestionByTagName(final String tagName) {
         final String uri = "http://localhost:8081/findQuestionByTagName?tagName=";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -24,11 +26,4 @@ public class UserService   {
 
         return jsonObject;
     }
-
-
-  /*  public final User createUser ( final long id ) {
-        getUser
-    }
-
-    public findUser*/
 }

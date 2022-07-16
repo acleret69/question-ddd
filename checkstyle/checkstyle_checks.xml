@@ -3,15 +3,15 @@
           "-//Checkstyle//DTD Checkstyle Configuration 1.2//EN"
           "https://checkstyle.org/dtds/configuration_1_2.dtd">
 
-<!-- Checkstyle configuration that checks the sun coding conventions from: 
-	- the Java Language Specification at http://java.sun.com/docs/books/jls/second_edition/html/index.html 
-	- the Sun Code Conventions at http://java.sun.com/docs/codeconv/ - the Javadoc 
-	guidelines at http://java.sun.com/j2se/javadoc/writingdoccomments/index.html 
-	- the JDK Api documentation http://java.sun.com/j2se/docs/api/index.html 
-	- some best practices Checkstyle is very configurable. Be sure to read the 
-	documentation at http://checkstyle.sf.net (or in your downloaded distribution). 
-	Most Checks are configurable, be sure to consult the documentation. To completely 
-	disable a check, just comment it out or delete it from the file. Finally, 
+<!-- Checkstyle configuration that checks the sun coding conventions from:
+	- the Java Language Specification at http://java.sun.com/docs/books/jls/second_edition/html/index.html
+	- the Sun Code Conventions at http://java.sun.com/docs/codeconv/ - the Javadoc
+	guidelines at http://java.sun.com/j2se/javadoc/writingdoccomments/index.html
+	- the JDK Api documentation http://java.sun.com/j2se/docs/api/index.html
+	- some best practices Checkstyle is very configurable. Be sure to read the
+	documentation at http://checkstyle.sf.net (or in your downloaded distribution).
+	Most Checks are configurable, be sure to consult the documentation. To completely
+	disable a check, just comment it out or delete it from the file. Finally,
 	it is worth reading the documentation. -->
 
 <module name="Checker">
@@ -139,7 +139,10 @@
 		<module name="AvoidInlineConditionals" />
 		<module name="EmptyStatement" />
 		<module name="EqualsHashCode" />
-		<module name="HiddenField" />
+		<module name="HiddenField" >
+			<property name="ignoreSetter" value="true" />
+			<property name="ignoreConstructorParameter" value="true" />
+		</module>
 		<module name="IllegalInstantiation" />
 		<module name="InnerAssignment" />
 		<module name="MagicNumber" />

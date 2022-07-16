@@ -10,7 +10,16 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  *
  */
 @RepositoryRestResource(collectionResourceRel = "category", path = "category")
-public interface CategoryRepository extends PagingAndSortingRepository<Category, Long> {
+public interface CategoryRepository
+        extends PagingAndSortingRepository<Category, Long> {
+    /** findCategoryByName method.
+     @param name the category name
+     @return a category
+     */
     Category findCategoryByName(@Param("name") String name);
+    /** findCategoryById method.
+     @param id the category ID
+     @return a category
+     */
     Category findCategoryById(@Param("id") long id);
 }

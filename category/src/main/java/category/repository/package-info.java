@@ -5,4 +5,4 @@
  * @author Benoit PEGAZ
  *         Microservices.
  */
-package fr.gamedev.question;
+package category.repository;

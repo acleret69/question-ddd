@@ -10,36 +10,71 @@ import java.util.Objects;
 
 @Service
 public class UserAnswerService {
+    /**
+     * Constant for Correct Answer.
+     */
+    private static final int CORRECT_ANSWER_POINTS = 5;
+    /**
+     * Constant for Bad Answer.
+     */
+    private static final int BAD_ANSWER_POINTS = 0;
 
-    public void updateUserAnswerById(UserAnswer userAnswer, Integer points, boolean correctAnswer , String response) {
+    /**
+     * updateUserAnswerById method.
+     * @param userAnswer a userAnswer
+     * @param points a number of points
+     * @param correctAnswer a correctAnswer
+     * @param response a response
+     */
+    public void updateUserAnswerById(
+            final UserAnswer userAnswer,
+            final Integer points,
+            final boolean correctAnswer,
+            final String response) {
         userAnswer.setPoints(points);
         userAnswer.setCorrectAnswer(correctAnswer);
         userAnswer.setResponse(response);
     }
 
-    public void setPoints(UserAnswer userAnswer, Question question, PendingResponse pendingResponse) {
+    /**
+     * setPoints method.
+     * @param userAnswer a userAnswer
+     * @param question a question
+     * @param pendingResponse a pendingResponse
+     */
+    public void setPoints(
+            final UserAnswer userAnswer,
+            final Question question,
+            final PendingResponse pendingResponse) {
         if (userAnswer.getResponse() != null && !Objects.equals(userAnswer.getResponse(), "")) {
-            if(Objects.equals(userAnswer.getResponse(), question.getCorrectAnswer())) {
+            if (Objects.equals(userAnswer.getResponse(), question.getCorrectAnswer())) {
                 userAnswer.setCorrectAnswer(true);
-                userAnswer.setPoints(5);
+                userAnswer.setPoints(CORRECT_ANSWER_POINTS);
             } else {
                 userAnswer.setCorrectAnswer(false);
-                userAnswer.setPoints(0);
+                userAnswer.setPoints(BAD_ANSWER_POINTS);
             }
             pendingResponse.setStatus(Status.answered);
 
         } else {
-            userAnswer.setPoints(0);
+            userAnswer.setPoints(BAD_ANSWER_POINTS);
         }
     }
 
-
-
-    public UserAnswer initialiseUserAnswer(long IdUser, long IdQuestion, String response) {
+    /**
+     * initialiseUserAnswer method.
+     * @param idUser a user ID
+     * @param idQuestion a question ID
+     * @param response a response
+     * @return a UserAnswer
+     */
+    public UserAnswer initialiseUserAnswer(
+            final long idUser,
+            final long idQuestion,
+            final String response) {
         UserAnswer userAnswer = new UserAnswer();
-        //userAnswser.setId();
-        userAnswer.setIdUser(IdUser);
-        userAnswer.setIdQuestion(IdQuestion);
+        userAnswer.setIdUser(idUser);
+        userAnswer.setIdQuestion(idQuestion);
         userAnswer.setResponse(response);
         return  userAnswer;
     }

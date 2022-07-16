@@ -1,6 +1,10 @@
 package fr.gamedev.user.data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * @author djer1
@@ -25,15 +29,16 @@ public class User {
      */
     private String lastName;
 
-    public User()
-    {
-
+    public User() {
     }
 
-    public User(long id, String login, String lastName) {
-        this.id = id ;
-        this.login = login ;
-        this.lastName = lastName ;
+    public User(
+            final long id,
+            final String login,
+            final String lastName) {
+        this.id = id;
+        this.login = login;
+        this.lastName = lastName;
     }
 
     /**

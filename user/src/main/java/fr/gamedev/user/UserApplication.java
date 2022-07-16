@@ -9,13 +9,19 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 @SpringBootApplication
 public class UserApplication implements RepositoryRestConfigurer {
-
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		SpringApplication.run(UserApplication.class, args);
 	}
 
+	/**
+	 * configureRepositoryRestConfiguration method.
+	 * @param config a RepositoryRestConfiguration
+	 * @param cors a CorsRegistry
+	 */
 	@Override
-	public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
+	public void configureRepositoryRestConfiguration(
+			final RepositoryRestConfiguration config,
+			final CorsRegistry cors) {
 		config.exposeIdsFor(User.class);
 	}
 }
