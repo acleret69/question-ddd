@@ -58,10 +58,10 @@ public class User {
     }
 
     /**
-     * @param identifiant the id to set
+     * @param id the id to set
      */
-    public void setId(final long identifiant) {
-        this.id = identifiant;
+    public void setId(final long id) {
+        this.id = id;
     }
 
     /**
@@ -72,10 +72,10 @@ public class User {
     }
 
     /**
-     * @param newlogin the login to set
+     * @param login the login to set
      */
-    public void setLogin(final String newlogin) {
-        this.login = newlogin;
+    public void setLogin(final String login) {
+        this.login = login;
     }
 
     /**
@@ -86,10 +86,10 @@ public class User {
     }
 
     /**
-     * @param newlastName the lastName to set
+     * @param lastName the lastName to set
      */
-    public void setLastName(final String newlastName) {
-        this.lastName = newlastName;
+    public void setLastName(final String lastName) {
+        this.lastName = lastName;
     }
 
 }

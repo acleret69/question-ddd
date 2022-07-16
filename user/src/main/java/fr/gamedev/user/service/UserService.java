@@ -13,9 +13,9 @@ import org.springframework.web.client.RestTemplate;
 public class UserService   {
     /**
      * updateUser class.
-     * @param user
-     * @param login
-     * @param lastName
+     * @param user a user
+     * @param login a login
+     * @param lastName a lastname
      */
     public static void updateUser(
             final User user,
