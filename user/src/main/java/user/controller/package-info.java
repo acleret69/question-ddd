@@ -5,4 +5,4 @@
  * @author Benoit PEGAZ
  *         Microservices.
  */
-package fr.gamedev.user.controller;
+package user.controller;

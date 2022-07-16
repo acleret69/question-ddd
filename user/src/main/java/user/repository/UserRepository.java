@@ -1,8 +1,8 @@
 /**
  */
-package fr.gamedev.user.repository;
+package user.repository;
 
-import fr.gamedev.user.data.User;
+import user.data.User;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;

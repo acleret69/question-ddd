@@ -1,8 +1,8 @@
-package fr.gamedev.user.service;
+package user.service;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import fr.gamedev.user.data.User;
+import user.data.User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 

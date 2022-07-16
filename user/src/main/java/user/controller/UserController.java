@@ -1,9 +1,9 @@
-package fr.gamedev.user.controller;
+package user.controller;
 
 import com.google.gson.JsonObject;
-import fr.gamedev.user.data.User;
-import fr.gamedev.user.repository.UserRepository;
-import fr.gamedev.user.service.UserService;
+import user.data.User;
+import user.repository.UserRepository;
+import user.service.UserService;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;

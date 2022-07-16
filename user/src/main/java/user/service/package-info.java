@@ -5,4 +5,4 @@
  * @author Benoit PEGAZ
  *         Microservices.
  */
-package fr.gamedev.user.service;
+package user.service;

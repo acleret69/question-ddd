@@ -1,4 +1,4 @@
-package fr.gamedev.user.data;
+package user.data;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
