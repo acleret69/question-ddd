@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * PendingResponse class.
+ */
 @Entity
 @Table(name = "pendingResponse")
 public class PendingResponse {

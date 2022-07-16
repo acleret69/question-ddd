@@ -6,12 +6,24 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import fr.gamedev.question.question.data.UserAnswer;
 
 /**
- * @author djer13
- *
+ * UserAnswerRepository interface.
  */
 @RepositoryRestResource(collectionResourceRel = "usersAnswer", path = "usersAnswer")
 public interface UserAnswerRepository extends PagingAndSortingRepository<UserAnswer, Long> {
+    /**
+     * findUserAnswerById method.
+     * @param userAnswerId a user answer ID
+     * @return a user answer
+     */
     UserAnswer findUserAnswerById(long userAnswerId);
+
+    /**
+     * findByIdUserAndIdQuestionAndResponse method.
+     * @param idUser a user id
+     * @param idQuestion a question id
+     * @param response a response
+     * @return a user answer
+     */
     UserAnswer findByIdUserAndIdQuestionAndResponse(@Param("idUser") long idUser, @Param("idQuestion") long idQuestion,
                                                                @Param("response") String response);
 }

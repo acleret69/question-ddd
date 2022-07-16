@@ -6,8 +6,17 @@ import fr.gamedev.user.data.User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * UserService class.
+ */
 @Service
 public class UserService   {
+    /**
+     * updateUser class.
+     * @param user
+     * @param login
+     * @param lastName
+     */
     public static void updateUser(
             final User user,
             final String login,
@@ -16,6 +25,11 @@ public class UserService   {
         user.setLogin(login);
     }
 
+    /**
+     * findQuestionByTagName method.
+     * @param tagName a tag name
+     * @return a JsonObject
+     */
     public static JsonObject findQuestionByTagName(final String tagName) {
         final String uri = "http://localhost:8081/findQuestionByTagName?tagName=";
 

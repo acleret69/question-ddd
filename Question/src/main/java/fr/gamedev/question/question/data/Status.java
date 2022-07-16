@@ -1,5 +1,8 @@
 package fr.gamedev.question.question.data;
 
+/**
+ * Status enum.
+ */
 public enum Status {
     /**
      * Status.answered.

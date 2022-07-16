@@ -29,9 +29,18 @@ public class User {
      */
     private String lastName;
 
+    /**
+     * User constructor.
+     */
     public User() {
     }
 
+    /**
+     * User constructor.
+     * @param id an ID
+     * @param login a login
+     * @param lastName a lastname
+     */
     public User(
             final long id,
             final String login,

@@ -9,11 +9,21 @@ import fr.gamedev.question.question.data.Question;
 import java.util.List;
 
 /**
- * @author djer1
- *
+ * QuestionRepository interface.
  */
 @RepositoryRestResource(collectionResourceRel = "question", path = "question")
 public interface QuestionRepository extends PagingAndSortingRepository<Question, Long> {
+    /**
+     * findQuestionById method.
+     * @param id an ID
+     * @return a question
+     */
     Question findQuestionById(@Param("id") long id);
+
+    /**
+     * findQuestionsByidTag method.
+     * @param idTag a tag ID
+     * @return a list of Question
+     */
     List<Question> findQuestionsByidTag(@Param("idTag") int idTag);
 }

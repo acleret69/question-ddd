@@ -7,9 +7,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * PendingResponseService class.
+ */
 @Service
 public class PendingResponseService {
-    /**the pendingResponseRepository.*/
+    /** The pendingResponseRepository.*/
     private final PendingResponseRepository pendingResponseRepository;
 
     /**The constructor of PendingResponseService.

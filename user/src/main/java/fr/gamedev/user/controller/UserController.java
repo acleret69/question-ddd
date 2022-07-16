@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
+/**
+ * UserController class.
+ */
 @RestController
 public class UserController {
     /**
@@ -21,6 +24,11 @@ public class UserController {
      */
     private final UserRepository userRepository;
 
+    /**
+     * UserController constructor.
+     * @param userRepository a user repository
+     * @param userService a user service
+     */
     public UserController(
             final UserRepository userRepository,
             final UserService userService) {
@@ -28,12 +36,22 @@ public class UserController {
         this.userService = userService;
     }
 
+    /**
+     * deleteUserById method.
+     * @param idUser a user ID
+     */
     @DeleteMapping("/deleteUserById")
     public final void deleteUserById(
             @RequestParam final long idUser) {
         userRepository.deleteById(idUser);
     }
 
+    /**
+     * updateUser method.
+     * @param idUser a user ID
+     * @param login a login
+     * @param lastName a lastname
+     */
     @PostMapping("/updateUser")
     public final void updateUser(
             @RequestParam final long idUser,
@@ -44,28 +62,13 @@ public class UserController {
         userRepository.save(user);
     }
 
+    /**
+     * findQuestionByTagName method.
+     * @param tagName a tag name
+     * @return a JsonObject
+     */
     @GetMapping("/findQuestionByTagName")
     public final JsonObject findQuestionByTagName(@RequestParam final String tagName) {
         return userService.findQuestionByTagName(tagName);
     }
-
-
-
-    /* @GetMapping("/createUser")
-    public final User createUser (@RequestParam final long id, @RequestParam final String login,
-                                  @RequestParam final String lastName) {
-        return new User(id,login,lastName);
-    }
-
-   @GetMapping("/createUser")
-    public final User createUser (@RequestParam final long id ) {
-
-        User test = new User(1, "","");
-
-        return findUser();
-    }*/
-  /*  @GetMapping("/createUser")
-    public final User createUser (@RequestParam final long id ) {
-        return findUser();
-    }*/
 }

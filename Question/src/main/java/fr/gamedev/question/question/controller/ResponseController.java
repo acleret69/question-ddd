@@ -109,6 +109,12 @@ public class ResponseController {
         questionRepository.save(question);
     }
 
+    /**
+     * updateTagFromQuestion method.
+     * @param questionId a question ID
+     * @param content a content
+     * @param correctAnswer the correct answer
+     */
     @PostMapping("/updateQuestionById")
     private void updateTagFromQuestion(
             @RequestParam final long questionId,
@@ -119,6 +125,13 @@ public class ResponseController {
         questionRepository.save(question);
     }
 
+    /**
+     * updateUserAnswerById method.
+     * @param userAnswerId a user answer ID
+     * @param points the points
+     * @param correctAnswer the correct answer
+     * @param response the response
+     */
     @PostMapping("/updateUserAnswerById")
     private void updateUserAnswerById(@RequestParam final long userAnswerId,
                                       @RequestParam final Integer points,
@@ -129,6 +142,13 @@ public class ResponseController {
         userAnswerRepository.save(userAnswer);
     }
 
+    /**
+     * updatePendingResponseAnswerById method.
+     * @param userAnswerId a user answer ID
+     * @param points points
+     * @param correctAnswer the correct answer
+     * @param response the response
+     */
     @PostMapping("/updatePendingResponseAnswerById")
     private void updatePendingResponseAnswerById(
             @RequestParam final long userAnswerId,
@@ -140,6 +160,10 @@ public class ResponseController {
         userAnswerRepository.save(userAnswer);
     }
 
+    /**
+     * deleteTagFromQuestion method.
+     * @param questionId a question ID
+     */
     @PostMapping("/deleteTagFromQuestion")
     private void deleteTagFromQuestion(@RequestParam final long questionId) {
         Question question = questionRepository.findQuestionById(questionId);
@@ -147,21 +171,42 @@ public class ResponseController {
         questionRepository.save(question);
     }
 
+    /**
+     * deleteTagById method.
+     * @param idQuestion a question ID
+     */
     @DeleteMapping("/deleteQuestionById")
     public final void deleteTagById(@RequestParam final long idQuestion) {
         questionRepository.deleteById(idQuestion);
     }
 
+    /**
+     * deleteUserAnswerById method.
+     * @param userAnswerId a user answer ID
+     */
     @DeleteMapping("/deleteUserAnswerById")
     public final void deleteUserAnswerById(@RequestParam final long userAnswerId) {
         questionRepository.deleteById(userAnswerId);
     }
 
+    /**
+     * findQuestionByTagName method.
+     * @param tagName a tag name
+     * @return a list of Question
+     */
     @GetMapping("/findQuestionByTagName")
     public final List<Question> findQuestionByTagName(@RequestParam final String tagName) {
         return questionService.findQuestionsByTag(tagName);
     }
 
+    /**
+     * userAnswer method.
+     * @param id an ID
+     * @param idUser a user ID
+     * @param idQuestion a question ID
+     * @param response the response
+     * @return a string result if user has earned points or not
+     */
     @PostMapping("/userAnswer")
     public final String userAnswer(
             @RequestParam final long id,

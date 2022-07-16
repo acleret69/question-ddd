@@ -7,21 +7,28 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
+/**
+ * UserApplication class.
+ */
 @SpringBootApplication
 public class UserApplication implements RepositoryRestConfigurer {
-	public static void main(final String[] args) {
-		SpringApplication.run(UserApplication.class, args);
-	}
+   /**
+    * main method.
+    * @param args arguments
+    */
+   public static void main(final String[] args) {
+      SpringApplication.run(UserApplication.class, args);
+   }
 
-	/**
-	 * configureRepositoryRestConfiguration method.
-	 * @param config a RepositoryRestConfiguration
-	 * @param cors a CorsRegistry
-	 */
-	@Override
-	public void configureRepositoryRestConfiguration(
-			final RepositoryRestConfiguration config,
-			final CorsRegistry cors) {
-		config.exposeIdsFor(User.class);
-	}
+   /**
+    * configureRepositoryRestConfiguration method.
+    * @param config a RepositoryRestConfiguration
+    * @param cors a CorsRegistry
+    */
+   @Override
+   public void configureRepositoryRestConfiguration(
+         final RepositoryRestConfiguration config,
+         final CorsRegistry cors) {
+      config.exposeIdsFor(User.class);
+   }
 }

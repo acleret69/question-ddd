@@ -9,6 +9,9 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
+/**
+ * QuestionService class.
+ */
 @Service
 public class QuestionService {
     /**The questionRepository.*/

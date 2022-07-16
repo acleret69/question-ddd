@@ -5,6 +5,9 @@ import category.data.Category;
 import category.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
+/**
+ * TagService class.
+ */
 @Service
 public class TagService  {
 
