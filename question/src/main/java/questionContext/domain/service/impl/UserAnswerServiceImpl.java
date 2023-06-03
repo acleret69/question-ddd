@@ -1,10 +1,12 @@
-package question.service;
+package questionContext.domain.service.impl;
 
-import question.data.PendingResponse;
-import question.data.Question;
-import question.data.Status;
-import question.data.UserAnswer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import questionContext.domain.model.PendingResponse;
+import questionContext.domain.model.Question;
+import questionContext.domain.model.Status;
+import questionContext.domain.model.UserAnswer;
+import questionContext.domain.service.interfaces.UserAnswerService;
 
 import java.util.Objects;
 
@@ -12,11 +14,12 @@ import java.util.Objects;
  * UserAnswerService class.
  */
 @Service
-public class UserAnswerService {
+public class UserAnswerServiceImpl implements UserAnswerService {
     /**
      * Constant for Correct Answer.
      */
     private static final int CORRECT_ANSWER_POINTS = 5;
+
     /**
      * Constant for Bad Answer.
      */
@@ -25,7 +28,7 @@ public class UserAnswerService {
     /**
      * UserAnswerService constructor.
      */
-    public UserAnswerService() { }
+    public UserAnswerServiceImpl() { }
 
     /**
      * updateUserAnswerById method.

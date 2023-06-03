@@ -1,9 +1,11 @@
-package question.service;
+package questionContext.domain.service.impl;
 
-import question.data.PendingResponse;
-import question.data.Status;
-import question.repository.PendingResponseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import questionContext.domain.model.PendingResponse;
+import questionContext.domain.model.Status;
+import questionContext.domain.repository.PendingResponseRepository;
+import questionContext.domain.service.interfaces.PendingResponseService;
 
 import java.util.List;
 
@@ -11,13 +13,13 @@ import java.util.List;
  * PendingResponseService class.
  */
 @Service
-public class PendingResponseService {
+public class PendingResponseServiceImpl implements PendingResponseService {
     /** The pendingResponseRepository.*/
     private final transient PendingResponseRepository pendingResponseRepository;
 
     /**The constructor of PendingResponseService.
      * @param pendingResponseRepository the pendingResponseRepository*/
-    public PendingResponseService(final PendingResponseRepository pendingResponseRepository) {
+    public PendingResponseServiceImpl(final PendingResponseRepository pendingResponseRepository) {
         this.pendingResponseRepository = pendingResponseRepository;
     }
 

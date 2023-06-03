@@ -1,4 +1,4 @@
-package question.data;
+package questionContext.domain.model;
 
 /**
  * Status enum.

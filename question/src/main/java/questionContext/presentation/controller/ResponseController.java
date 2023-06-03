@@ -1,20 +1,13 @@
-package question.controller;
+package questionContext.presentation.controller;
 
-import question.data.PendingResponse;
-import question.data.Question;
-import question.data.Status;
-import question.data.UserAnswer;
-import question.repository.PendingResponseRepository;
-import question.repository.QuestionRepository;
-import question.repository.UserAnswerRepository;
-import question.service.PendingResponseService;
-import question.service.QuestionService;
-import question.service.UserAnswerService;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import questionContext.domain.model.*;
+import questionContext.domain.repository.PendingResponseRepository;
+import questionContext.domain.repository.QuestionRepository;
+import questionContext.domain.repository.UserAnswerRepository;
+import questionContext.domain.service.impl.*;
+import questionContext.domain.service.interfaces.*;
 
 import java.util.List;
 
@@ -59,6 +52,7 @@ public class ResponseController {
      * @param pendingResponseRepository the pendingResponseRepository
      * @param pendingResponseService the pendingResponseService
      */
+    @Autowired
     public ResponseController(final QuestionService questionService,
                               final QuestionRepository questionRepository,
                               final UserAnswerService userAnswerService,

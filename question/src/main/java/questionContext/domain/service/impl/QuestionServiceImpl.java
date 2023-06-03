@@ -1,11 +1,13 @@
-package question.service;
+package questionContext.domain.service.impl;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import question.data.Question;
-import question.repository.QuestionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import questionContext.domain.model.*;
+import questionContext.domain.repository.QuestionRepository;
+import questionContext.domain.service.interfaces.QuestionService;
 
 import java.util.List;
 
@@ -13,13 +15,13 @@ import java.util.List;
  * QuestionService class.
  */
 @Service
-public class QuestionService {
+public class QuestionServiceImpl implements QuestionService {
     /**The questionRepository.*/
     private final transient QuestionRepository questionRepository;
 
     /**QuestionService constructor.
      * @param questionRepository the questionRepository*/
-    public QuestionService(final QuestionRepository questionRepository) {
+    public QuestionServiceImpl(final QuestionRepository questionRepository) {
         this.questionRepository = questionRepository;
     }
 

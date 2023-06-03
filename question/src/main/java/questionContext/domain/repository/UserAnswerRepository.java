@@ -1,9 +1,9 @@
-package question.repository;
+package questionContext.domain.repository;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import question.data.UserAnswer;
+import questionContext.domain.model.UserAnswer;
 
 /**
  * UserAnswerRepository interface.
